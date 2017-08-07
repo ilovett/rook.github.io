@@ -9,9 +9,11 @@ layout: default
 {% assign currentProjectPath = '/docs/' | append: currentProject | append: '/' %}
 {% assign currentProjectVersionPath = | append: currentProjectPath | append: currentVersion | append: '/' %}
 {% assign project = site.data.projects | where_exp: 'item', 'item.project == currentProject' | first %}
+{% assign projectVersion = project.versions | where_exp: 'item', 'item.version == currentVersion' | first %}
 {% assign filepath = page.url | replace: currentProjectVersionPath %}
 
 <script>
+
   // expose jekyll variables into the wonderful world of javascript
   window.Rook = {
     site: {
@@ -22,6 +24,7 @@ layout: default
       url: {{ page.url | jsonify }},
       project: {{ project | jsonify }},
       version: {{ currentVersion | jsonify }},
+      branch: {{ projectVersion.branch | jsonify }},
       projectVersionPath: {{ currentProjectVersionPath | jsonify }},
       filepath: {{ filepath | jsonify }}
     },
@@ -53,7 +56,7 @@ layout: default
 
     <div class="docs-actions">
 
-      <a class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" href="{{ page.github }}{{ page.name }}">Edit on Github</a>
+      <a class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" href="{{ page.github }}{{ projectVersion.branch }}{{ page.docsRoot }}/{{ page.name }}">Edit on Github</a>
 
 
     </div>

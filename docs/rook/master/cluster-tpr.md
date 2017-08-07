@@ -17,7 +17,7 @@ Settings can be specified at the global level to apply to the cluster as a whole
 
 ### Cluster settings
 - `versionTag`: The version (tag) of the `rook/rook` container that will be deployed. Upgrades are not yet supported if this setting is updated for an existing cluster, but upgrades will be coming.
-- `dataDirHostPath`: The host path where config and data should be stored for each of the services. If the directory does not exist, it will be created. Because this directory persists on the host, it will remain after pods are deleted.  Therefore, for test scenarios, the path must be deleted if you are going to delete a cluster and start a new cluster on the same hosts.  More details can be found in the Kubernetes [host path docs](https://kubernetes.io/docs/concepts/storage/volumes/#hostpath).  
+- `dataDirHostPath`: The host path where config and data should be stored for each of the services. If the directory does not exist, it will be created. Because this directory persists on the host, it will remain after pods are deleted.  Therefore, for test scenarios, the path must be deleted if you are going to delete a cluster and start a new cluster on the same hosts.  More details can be found in the Kubernetes [host path docs](https://kubernetes.io/docs/concepts/storage/volumes/#hostpath).
 If this value is empty, each pod will get an ephemeral directory to store their config files that is tied to the lifetime of the pod running on that node. More details can be found in the Kubernetes [empty dir docs](https://kubernetes.io/docs/concepts/storage/volumes/#emptydir).
 - `placement`: [placement configuration settings](#placement-configuration-settings)
 - `storage`: Storage selection and configuration that will be used across the cluster.  Note that these settings can be overridden for specific nodes.
@@ -66,4 +66,4 @@ A Placement configuration is specified (according to the kubernetes [PodSpec](ht
 - `tolerations`: list of kubernetes [Toleration](https://kubernetes.io/docs/api-reference/v1.6/#toleration-v1-core)
 
 ## Sample
-A sample cluster TPR can be found and used in the [rook-cluster.yaml](https://github.com/rook/rook/blob/master/demo/kubernetes/rook-cluster.yaml) file in the Kubernetes demo directory.
+A sample cluster TPR can be found and used in the [rook-cluster.yaml](../demo/kubernetes/rook-cluster.yaml) file in the Kubernetes demo directory.

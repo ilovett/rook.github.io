@@ -24,4 +24,5 @@ defaults:
       path: "docs/rook"
     values:
       layout: "docs"
-      github: "https://github.com/rook/rook/blob/master/Documentation/"
+      github: "https://github.com/rook/rook/blob/"
+      docsRoot: "/Documentation"

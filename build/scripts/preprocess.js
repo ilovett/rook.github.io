@@ -32,9 +32,19 @@ projects.forEach(project => {
     project: project,
     path: `/docs/${ project }`,
     versions: versions.map((pv) => {
+
+      let branch = pv;
+
+      // reverse build branch name from directory version
+      const matches = pv.match(/^v([0-9]\.[0-9])$/);
+      if (matches) {
+        branch = `release-${ matches[1] }`;
+      }
+
       return {
         version: pv,
-        path: `/docs/${ project }/${ pv }`
+        path: `/docs/${ project }/${ pv }`,
+        branch: branch
       };
     })
   });
